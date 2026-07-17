@@ -1,12 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jordan Site</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AURUM GYM | Train Gold. Beyond Strong.</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#141414;--panel2:#1a1611;--gold:#e0b84b;--gold2:#f3d47a;--text:#f5f5f0;--muted:#b8b0a0;--line:rgba(224,184,75,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Segoe UI',Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{width:min(1200px,92%);margin:auto}
+header{position:sticky;top:0;z-index:60;background:rgba(10,10,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:800;letter-spacing:.08em;font-size:22px;color:var(--gold2)}
+.menu{display:flex;gap:28px;color:#ddd;font-size:14px}
+.menu a.active,.menu a:hover{color:var(--gold2)}
+.navbtns{display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px}
+.btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#151004}
+.btn.outline{border:1px solid var(--gold);color:var(--gold2)}
+.hero{padding:90px 0 60px;text-align:center;background:
+  radial-gradient(circle at 50% 0%,rgba(224,184,75,.10),transparent 45%),
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+  url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80') center/cover}
+.badge{color:var(--gold2);letter-spacing:.3em;font-size:12px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,6vw,64px);margin:0 0 18px;line-height:1.1}
+.hero h1 span{color:var(--gold2)}
+.hero p{color:var(--muted);max-width:60ch;margin:0 auto 30px;line-height:1.7}
+.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+section{padding:70px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 40px}
+.eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:.25em;font-size:12px;margin-bottom:12px}
+.section-head h2{font-size:34px;margin:0 0 12px}
+.section-head p{color:var(--muted);line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-grid img{border-radius:20px;border:1px solid var(--line)}
+.stats{display:flex;gap:40px;margin-top:24px}
+.stats b{display:block;font-size:30px;color:var(--gold2)}
+.stats span{color:var(--muted);font-size:13px}
+.zones{display:grid;grid-template-columns:1.3fr .7fr;gap:20px}
+.zone-main{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:420px;background-size:cover;background-position:center}
+.zone-main .tag{position:absolute;top:22px;left:22px;background:rgba(0,0,0,.5);color:var(--gold2);padding:6px 12px;border-radius:999px;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+.zone-main .info{position:absolute;bottom:0;left:0;right:0;padding:26px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.zone-main .info h3{margin:0 0 8px;font-size:24px}
+.zone-main .info p{margin:0;color:#ddd;font-size:14px;max-width:50ch}
+.zone-side{display:grid;gap:20px}
+.zone-card{border-radius:20px;border:1px solid var(--line);background:var(--panel);padding:22px;background-size:cover;background-position:center;min-height:190px;position:relative;overflow:hidden}
+.zone-card::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,.35),rgba(10,10,10,.85))}
+.zone-card .zc-content{position:relative;z-index:1}
+.zone-card h4{margin:0 0 6px;font-size:18px}
+.zone-card p{margin:0;color:#ddd;font-size:13px}
+.appshow{background:linear-gradient(180deg,#0f0d09,#0a0a0a);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.app-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:40px;flex-wrap:wrap}
+.app-head h2{font-size:30px;margin:0 0 10px}
+.app-head p{color:var(--muted);max-width:55ch;line-height:1.7;margin:0}
+.app-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.app-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.app-shot{aspect-ratio:9/16;background-size:cover;background-position:center;background-color:#111}
+.app-card .cap{padding:16px}
+.app-card .cap h4{margin:0 0 6px;font-size:16px;color:var(--gold2)}
+.app-card .cap p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.plans-head{text-align:center;max-width:720px;margin:0 auto 46px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px;position:relative}
+.plan.featured{border-color:var(--gold);transform:translateY(-8px);box-shadow:0 20px 60px rgba(224,184,75,.12)}
+.plan .rec{position:absolute;top:18px;right:18px;background:var(--gold);color:#151004;font-size:11px;font-weight:800;letter-spacing:.1em;padding:5px 10px;border-radius:6px}
+.plan h3{margin:0 0 6px;font-size:20px}
+.plan .price{font-size:38px;color:var(--gold2);margin:6px 0}
+.plan .price span{font-size:14px;color:var(--muted);font-weight:400}
+.plan ul{list-style:none;padding:0;margin:20px 0}
+.plan ul li{display:flex;gap:10px;color:#ddd;font-size:14px;line-height:1.5;margin-bottom:14px}
+.check{flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold2);color:#151004;display:grid;place-items:center;font-size:12px;font-weight:900}
+.pkg{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.pkg .row{display:flex;justify-content:space-between;font-size:14px;color:#ddd;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+.pkg .row small{color:var(--muted)}
+.plan .btn{width:100%;text-align:center;margin-top:20px}
+.cta{text-align:center;padding:80px 0;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80') center/cover;border-top:1px solid var(--line)}
+.cta h2{font-size:32px;margin:0 0 14px}
+.cta p{color:var(--muted);max-width:55ch;margin:0 auto 26px}
+footer{padding:40px 0;border-top:1px solid var(--line);background:#080807}
+.fgrid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.flinks{display:flex;gap:22px;color:var(--muted);font-size:14px;flex-wrap:wrap}
+.copyright{color:var(--muted);font-size:12px;margin-top:20px;text-align:center}
+@media(max-width:980px){.about-grid,.zones,.plans,.app-cards{grid-template-columns:1fr}.zone-side{grid-template-columns:1fr 1fr;display:grid}}
+@media(max-width:680px){.menu{display:none}.app-cards{grid-template-columns:1fr 1fr}.zone-side{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <h1>Hello, I'm Jordan</h1>
-  <p>This is my personal website.</p>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">AURUM GYM</div>
+    <nav class="menu">
+      <a href="#experience" class="active">Experience</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#memberships">Memberships</a>
+      <a href="#app">App</a>
+    </nav>
+    <div class="navbtns">
+      <a class="btn outline" href="#contact">Login</a>
+      <a class="btn primary" href="#memberships">Join Now</a>
+    </div>
+  </div>
+</header>
+
+<section id="experience" class="hero">
+  <div class="wrap">
+    <div class="badge">Aurum Fitness Sdn. Bhd. · Seberang Jaya, Penang</div>
+    <h1>TRAIN <span>GOLD.</span><br>BEYOND <span>STRONG.</span></h1>
+    <p>Experience the pinnacle of fitness in a sanctuary of luxury. AI-integrated technology meets uncompromising design for the elite performer.</p>
+    <div class="actions">
+      <a class="btn primary" href="#memberships">Start Your Journey</a>
+      <a class="btn outline" href="#facilities">Explore Facilities</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about-grid">
+    <div>
+      <div class="eyebrow">The Aurum Standard</div>
+      <h2 style="font-size:32px;margin:0 0 16px">More Than a Fitness Centre</h2>
+      <p style="color:var(--muted);line-height:1.8">Aurum Gym is a premium smart fitness centre combining modern gym facilities with AI-assisted technology to deliver personalised, convenient, and data-driven workout experiences for students, professionals, and fitness enthusiasts across Penang.</p>
+      <div class="stats">
+        <div><b>24/7</b><span>Extended access</span></div>
+        <div><b>AI</b><span>Personal coaching</span></div>
+        <div><b>2026</b><span>Founded in Seberang Jaya</span></div>
+      </div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80" alt="Aurum Gym interior" />
+  </div>
+</section>
+
+<section id="facilities" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Elite Zones</div>
+    <h2>Facilities Engineered for Performance</h2>
+    <p>From free weights to AI smart gym rooms, every zone is designed for isolated strength, recovery, and biomechanical precision.</p>
+  </div>
+  <div class="zones">
+    <div class="zone-main" style="background-image:url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80')">
+      <div class="tag">Zone E · Resistance & Hypertrophy</div>
+      <div class="info">
+        <h3>Strength Training Machines</h3>
+        <p>Precision-engineered equipment including Smith Machine, Cable Machine, Leg Press, Hack Squat, and more for targeted muscle development.</p>
+      </div>
+    </div>
+    <div class="zone-side">
+      <div class="zone-card" style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87f?auto=format&fit=crop&w=700&q=80')">
+        <div class="zc-content"><h4>Recovery Zone</h4><p>Massage chairs, foam rollers, cold water station, and stretching mats.</p></div>
+      </div>
+      <div class="zone-card" style="background-image:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=700&q=80')">
+        <div class="zc-content"><h4>Free Weights Zone</h4><p>Dumbbells 2kg-50kg, Olympic barbells, squat racks, and power racks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="app" class="appshow">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <div class="eyebrow">The Digital Extension</div>
+        <h2>Your Elite Experience, In Your Pocket</h2>
+        <p>The Aurum Gym app connects your biometrics, bookings, and progress into one seamless, high-performance interface.</p>
+      </div>
+      <a class="btn primary" href="#contact">Download App</a>
+    </div>
+    <div class="app-cards">
+      <div class="app-card">
+        <div class="app-shot" style="background-image:url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=500&q=80')"></div>
+        <div class="cap"><h4>Home Dashboard</h4><p>Track your performance, macros, hydration, and recovery score at a glance.</p></div>
+      </div>
+      <div class="app-card">
+        <div class="app-shot" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80')"></div>
+        <div class="cap"><h4>AI Coach</h4><p>Personalised weekly workout plans generated from your goals, experience, and biometric data.</p></div>
+      </div>
+      <div class="app-card">
+        <div class="app-shot" style="background-image:url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?auto=format&fit=crop&w=500&q=80')"></div>
+        <div class="cap"><h4>Booking Features</h4><p>Reserve personal training, recovery sessions, or group classes in seconds.</p></div>
+      </div>
+      <div class="app-card">
+        <div class="app-shot" style="background-image:url('https://images.unsplash.com/photo-1571019613576-2b22c76fd955?auto=format&fit=crop&w=500&q=80')"></div>
+        <div class="cap"><h4>Profile</h4><p>QR check-in, body measurements, membership status, and workout history.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="memberships" class="wrap">
+  <div class="plans-head">
+    <div class="eyebrow">Memberships</div>
+    <h2 style="font-size:32px;margin:0 0 12px">No Registration Fee. No Hidden Charges.</h2>
+    <p style="color:var(--muted);line-height:1.7">Select the level of access that aligns with your performance goals. Experience the pinnacle of AI-integrated fitness.</p>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <h3>Basic</h3>
+      <div class="price">RM159 <span>/month</span></div>
+      <ul>
+        <li><span class="check">✓</span>24/7 entry + AI basic data monitoring</li>
+        <li><span class="check">✓</span>Suitable for minimalist fitness enthusiasts</li>
+        <li><span class="check">✓</span>1 week free trial (only new users)</li>
+      </ul>
+      <div class="pkg">
+        <div class="row"><span>3 Month</span><span>RM429 <small>(RM143/mo)</small></span></div>
+        <div class="row"><span>6 Month</span><span>RM819 <small>(RM137/mo)</small></span></div>
+        <div class="row"><span>1 Year</span><span>RM1499 <small>(RM125/mo)</small></span></div>
+        <div class="row"><span>2 Year</span><span>RM2799 <small>(RM117/mo)</small></span></div>
+      </div>
+      <a class="btn outline" href="#contact">Select Basic</a>
+    </div>
+    <div class="plan featured">
+      <div class="rec">Recommended</div>
+      <h3>Gold</h3>
+      <div class="price">RM259 <span>/month</span></div>
+      <ul>
+        <li><span class="check">✓</span>All Basic benefits + full AI coaching &amp; tracking + unlimited recovery zone access</li>
+        <li><span class="check">✓</span>20% discount for personal training, recovery session, and group class</li>
+      </ul>
+      <div class="pkg">
+        <div class="row"><span>3 Month</span><span>RM699 <small>(RM233/mo)</small></span></div>
+        <div class="row"><span>6 Month</span><span>RM1314 <small>(RM219/mo)</small></span></div>
+        <div class="row"><span>1 Year</span><span>RM2399 <small>(RM200/mo)</small></span></div>
+        <div class="row"><span>2 Year</span><span>RM4499 <small>(RM187/mo)</small></span></div>
+      </div>
+      <a class="btn primary" href="#contact">Select Gold</a>
+    </div>
+    <div class="plan">
+      <h3>Elite</h3>
+      <div class="price">RM359 <span>/month</span></div>
+      <ul>
+        <li><span class="check">✓</span>All Gold benefits + 2 private training sessions per month + priority booking for group classes</li>
+        <li><span class="check">✓</span>Exclusive experience</li>
+        <li><span class="check">✓</span>50% discount for personal training, recovery session, and group class</li>
+      </ul>
+      <div class="pkg">
+        <div class="row"><span>3 Month</span><span>RM969 <small>(RM323/mo)</small></span></div>
+        <div class="row"><span>6 Month</span><span>RM1824 <small>(RM304/mo)</small></span></div>
+        <div class="row"><span>1 Year</span><span>RM3299 <small>(RM275/mo)</small></span></div>
+        <div class="row"><span>2 Year</span><span>RM6199 <small>(RM258/mo)</small></span></div>
+      </div>
+      <a class="btn outline" href="#contact">Upgrade Now</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <h2>Experience the Standard</h2>
+    <p>Membership at Aurum Gym is strictly limited to ensure an uncrowded, premium environment. Book a private tour to view the facilities.</p>
+    <a class="btn primary" href="mailto:hello@aurumgym.com">Book a Tour</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <div class="logo" style="font-size:18px">AURUM GYM</div>
+      <div style="color:var(--muted);font-size:12px;margin-top:6px">EST. 2026 · Seberang Jaya, Penang</div>
+    </div>
+    <div class="flinks">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Careers</a>
+      <a href="#">Press Kit</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+  <div class="wrap copyright">© 2026 Aurum Fitness Sdn. Bhd. All rights reserved.</div>
+</footer>
+
 </body>
 </html>
